@@ -90,7 +90,7 @@ body {
     height: 6px;
     width: calc(var(--cur-value) / var(--max-value) * 100% - 5px);
     border-radius: 21px;
-    background: green;
+    background: var(--bg-color);
 }
 
 .pA1{

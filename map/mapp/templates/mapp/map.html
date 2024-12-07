@@ -12,7 +12,7 @@
 </head>
 <body>
     <div class="lpart">
-            <form class="search-page" method="post" action="#">
+            <form class="search-page" method="post" action="{% url 'map' %}">
                 {% csrf_token %}
                 <div class="search-lp">
                     <svg xmlns="http://www.w3.org/2000/svg" width="36" height="36" viewBox="0 0 36 36" fill="none">

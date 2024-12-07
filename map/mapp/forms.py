@@ -1,7 +1,9 @@
 from django import forms
 from .models import *
+import random as rnd
 
-class TaskForm(forms.ModelForm):
+
+class StreetsForm(forms.ModelForm):
     class Meta:
-        model = Log
-        fields = []  # Поля, которые будут в форме
+        model = Streets
+        fields = ['']  # Поля, которые будут в форме

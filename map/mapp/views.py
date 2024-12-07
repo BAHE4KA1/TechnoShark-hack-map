@@ -21,4 +21,4 @@ def map(request):
         search = request.POST.get('search')
         streets = Streets.objects.filter(name=search)
         print(search, streets)
-    return render(request, 'mapp/map.html', {'streets': streets})
+    return render(request, 'mapp/map.html', {'streets': streets.order_by('-traffic_value')})
