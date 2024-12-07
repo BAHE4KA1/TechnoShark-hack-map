@@ -1,6 +1,5 @@
 from langchain_core.messages import HumanMessage, SystemMessage
 from langchain_gigachat.chat_models import GigaChat
-
 auth_t = 'YWFlM2RmYmYtOWU4ZS00NDdjLTg4ZDItMDE0MWFhOWM3ZWZiOjBiYzNjN2RjLWZiZTUtNDkzZS04MTRlLTkxMGVkYzAxYzQ2Ng=='
 
 def auth_llm(auth_t):

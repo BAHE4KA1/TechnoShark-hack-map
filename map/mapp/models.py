@@ -1,5 +1,5 @@
 from django.db import models
-from . import neuro as n
+from .neuro import *
 
 class Streets(models.Model):
     t_marks = [
