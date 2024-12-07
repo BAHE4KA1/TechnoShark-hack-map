@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>Список водителей</title>
+    {% load static %}
+    <link rel="stylesheet" type="text/css" href="{% static 'mapp/driver_list.css' %}">
+</head>
+<body>
+{% for driver in drivers %}
+<div class="cont">
+    <p class="name">{{driver.first_name}}<br>{{driver.last_name}}</p>
+    <div class="mid">
+        <div class="mark"><p>{{driver.rating}}</p></div>
+        <p class="hired">{% if driver.freelance %} Наёмный {% else %} Устроенный {% endif %}</p>
+    </div>
+    <button class="btn-connect">Связаться</button>
+</div>
+{% endfor %}
+</body>
+</html>

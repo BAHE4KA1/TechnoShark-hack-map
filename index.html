@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>Yandex Maps to Python</title>
+    <script src="https://api-maps.yandex.ru/2.1/?lang=ru_RU" type="text/javascript"></script>
+    <style>
+        #map {
+            width: 600px;
+            height: 400px;
+            padding: 0;
+            margin: 0;
+        }
+    </style>
+</head>
+<body>
+    <h1>Yandex Maps Data to Python</h1>
+    <div id="map"></div>
+    <button id="sendData">Отправить данные на сервер</button>
+
+    <script>
+        ymaps.ready(init);
+
+        let myMap;
+        let placemark;
+
+        function init(){
+            myMap = new ymaps.Map("map", {
+                center: [55.751244, 37.618423], // Москва
+                zoom: 10
+            });
+
+            // Добавляем метку
+            placemark = new ymaps.Placemark(myMap.getCenter(), {
+                hintContent: 'Центр Москвы',
+                balloonContent: 'Это центр столицы'
+            });
+
+            myMap.geoObjects.add(placemark);
+
+            // Слушаем событие перемещения метки
+            placemark.events.add('dragend', function (e) {
+                let coords = placemark.geometry.getCoordinates();
+                console.log('Новые координаты:', coords);
+            });
+
+            // Разрешаем перетаскивание метки
+            placemark.options.set('draggable', true);
+        }
+
+        document.getElementById('sendData').addEventListener('click', () => {
+            if (!placemark) {
+                alert('Метка не создана!');
+                return;
+            }
+
+            let coords = placemark.geometry.getCoordinates();
+            let data = {
+                coordinates: coords,
+                // Добавьте другие необходимые данные
+            };
+
+            fetch('http://127.0.0.1:5000/send_map_data', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify(data),
+            })
+            .then(response => response.json())
+            .then(data => {
+                console.log('Успех:', data);
+                alert('Данные отправлены на сервер!');
+            })
+            .catch((error) => {
+                console.error('Ошибка:', error);
+                alert('Произошла ошибка при отправке данных.');
+            });
+        });
+    </script>
+</body>
+</html>
