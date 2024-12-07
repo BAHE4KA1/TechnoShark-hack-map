@@ -17,7 +17,7 @@ from .models import *
 #         fields = ['name', 'category', 'price__gt', 'price__lt']
 
 
-class LogFilter(df.FilterSet):
+class LogFilter(df.FilteSet):
     actor = df.CharFilter(lookup_expr='icontains', label='Действователь')
 
     class Meta:

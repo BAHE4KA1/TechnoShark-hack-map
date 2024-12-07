@@ -11,49 +11,68 @@
     <title>Главная</title>
 </head>
 <body>
-    <div class="search-page">
-        <div class="search-lp">
-            <svg xmlns="http://www.w3.org/2000/svg" width="36" height="36" viewBox="0 0 36 36" fill="none">
-                <path d="M25.8741 1.12027H10.1241C8.93107 1.12157 7.78723 1.5961 6.9436 2.43973C6.09997 3.28336 5.62545 4.4272 5.62415 5.62027V30.3703C5.62545 31.5633 6.09997 32.7072 6.9436 33.5508C7.78723 34.3944 8.93107 34.869 10.1241 34.8703H25.8741C27.0672 34.869 28.211 34.3944 29.0547 33.5508C29.8983 32.7072 30.3728 31.5633 30.3741 30.3703V5.62027C30.3728 4.4272 29.8983 3.28336 29.0547 2.43973C28.211 1.5961 27.0672 1.12157 25.8741 1.12027ZM23.447 19.9999C23.9792 20.5743 24.2394 21.3471 24.1775 22.1753C24.0559 23.8249 22.798 25.1671 21.3741 25.1671C19.9503 25.1671 18.6903 23.8249 18.5701 22.1753C18.5096 21.3386 18.7677 20.5645 19.2971 19.9957C19.8266 19.4268 20.5585 19.1203 21.3741 19.1203C21.7618 19.1147 22.1464 19.19 22.5033 19.3415C22.8602 19.493 23.1816 19.7172 23.447 19.9999ZM13.4991 5.62027C13.4991 5.3219 13.6177 5.03575 13.8286 4.82477C14.0396 4.6138 14.3258 4.49527 14.6241 4.49527H21.3741C21.6725 4.49527 21.9587 4.6138 22.1696 4.82477C22.3806 5.03575 22.4991 5.3219 22.4991 5.62027C22.4991 5.91864 22.3806 6.20479 22.1696 6.41576C21.9587 6.62674 21.6725 6.74527 21.3741 6.74527H14.6241C14.3258 6.74527 14.0396 6.62674 13.8286 6.41576C13.6177 6.20479 13.4991 5.91864 13.4991 5.62027ZM26.7882 31.2021C26.7072 31.2958 26.6066 31.3707 26.4935 31.4214C26.3804 31.472 26.2575 31.4972 26.1336 31.4953H16.6147C16.4908 31.4972 16.3679 31.472 16.2548 31.4214C16.1417 31.3707 16.0411 31.2958 15.9601 31.2021C15.8722 31.0968 15.8092 30.9732 15.7756 30.8403C15.742 30.7074 15.7387 30.5686 15.766 30.4343C15.9945 29.1996 16.7068 28.1625 17.8262 27.4347C18.8204 26.7886 20.0804 26.4328 21.3741 26.4328C22.6679 26.4328 23.9279 26.7886 24.9221 27.4347C26.0415 28.1625 26.7537 29.1996 26.9823 30.4343C27.0096 30.5686 27.0063 30.7074 26.9727 30.8403C26.9391 30.9732 26.8761 31.0968 26.7882 31.2021Z" fill="#16A0AD"/>
-            </svg>
-            <input type="text" placeholder="Введите улицу" class="search-input"/>
-        </div>
-        <svg xmlns="http://www.w3.org/2000/svg" width="36" height="36" viewBox="0 0 36 36" fill="none">
-            <path d="M15.75 28.5C22.7916 28.5 28.5 22.7916 28.5 15.75C28.5 8.7084 22.7916 3 15.75 3C8.7084 3 3 8.7084 3 15.75C3 22.7916 8.7084 28.5 15.75 28.5Z" stroke="black" stroke-width="3" stroke-linejoin="round"/>
-            <path d="M19.9926 10.7573C18.9068 9.67155 17.4068 9 15.75 9C14.0932 9 12.5932 9.67155 11.5073 10.7573" stroke="black" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
-            <path d="M24.9164 24.9164L31.2804 31.2803" stroke="black" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
-          </svg>
-    </div>
-    <div class="block-cars">
-        {% for street in streets %}
-        <div class="car1">
-            <div class="container-pb">
-                <div class="pA1">
-                    <span class="textA1">{{ street.name }}</span>
-                    <span class="textA1.1">{{ street.time_start }}</span>
+    <div class="lpart">
+            <form class="search-page" method="post" action="#">
+                {% csrf_token %}
+                <div class="search-lp">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="36" height="36" viewBox="0 0 36 36" fill="none">
+                        <path d="M25.8741 1.12027H10.1241C8.93107 1.12157 7.78723 1.5961 6.9436 2.43973C6.09997 3.28336 5.62545 4.4272 5.62415 5.62027V30.3703C5.62545 31.5633 6.09997 32.7072 6.9436 33.5508C7.78723 34.3944 8.93107 34.869 10.1241 34.8703H25.8741C27.0672 34.869 28.211 34.3944 29.0547 33.5508C29.8983 32.7072 30.3728 31.5633 30.3741 30.3703V5.62027C30.3728 4.4272 29.8983 3.28336 29.0547 2.43973C28.211 1.5961 27.0672 1.12157 25.8741 1.12027ZM23.447 19.9999C23.9792 20.5743 24.2394 21.3471 24.1775 22.1753C24.0559 23.8249 22.798 25.1671 21.3741 25.1671C19.9503 25.1671 18.6903 23.8249 18.5701 22.1753C18.5096 21.3386 18.7677 20.5645 19.2971 19.9957C19.8266 19.4268 20.5585 19.1203 21.3741 19.1203C21.7618 19.1147 22.1464 19.19 22.5033 19.3415C22.8602 19.493 23.1816 19.7172 23.447 19.9999ZM13.4991 5.62027C13.4991 5.3219 13.6177 5.03575 13.8286 4.82477C14.0396 4.6138 14.3258 4.49527 14.6241 4.49527H21.3741C21.6725 4.49527 21.9587 4.6138 22.1696 4.82477C22.3806 5.03575 22.4991 5.3219 22.4991 5.62027C22.4991 5.91864 22.3806 6.20479 22.1696 6.41576C21.9587 6.62674 21.6725 6.74527 21.3741 6.74527H14.6241C14.3258 6.74527 14.0396 6.62674 13.8286 6.41576C13.6177 6.20479 13.4991 5.91864 13.4991 5.62027ZM26.7882 31.2021C26.7072 31.2958 26.6066 31.3707 26.4935 31.4214C26.3804 31.472 26.2575 31.4972 26.1336 31.4953H16.6147C16.4908 31.4972 16.3679 31.472 16.2548 31.4214C16.1417 31.3707 16.0411 31.2958 15.9601 31.2021C15.8722 31.0968 15.8092 30.9732 15.7756 30.8403C15.742 30.7074 15.7387 30.5686 15.766 30.4343C15.9945 29.1996 16.7068 28.1625 17.8262 27.4347C18.8204 26.7886 20.0804 26.4328 21.3741 26.4328C22.6679 26.4328 23.9279 26.7886 24.9221 27.4347C26.0415 28.1625 26.7537 29.1996 26.9823 30.4343C27.0096 30.5686 27.0063 30.7074 26.9727 30.8403C26.9391 30.9732 26.8761 31.0968 26.7882 31.2021Z" fill="#16A0AD"/>
+                    </svg>
+                    <input type="text" placeholder="Введите название улицы" name="search" id="search" class="search-input"/>
                 </div>
-                <div class="progress-bar">
-                    <div class="progress-bar-value" id="{{ street.id }}">
+                <button type="submit" class="submit-button">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="36" height="36" viewBox="0 0 36 36" fill="none">
+                        <path d="M15.75 28.5C22.7916 28.5 28.5 22.7916 28.5 15.75C28.5 8.7084 22.7916 3 15.75 3C8.7084 3 3 8.7084 3 15.75C3 22.7916 8.7084 28.5 15.75 28.5Z" stroke="black" stroke-width="3" stroke-linejoin="round"/>
+                        <path d="M19.9926 10.7573C18.9068 9.67155 17.4068 9 15.75 9C14.0932 9 12.5932 9.67155 11.5073 10.7573" stroke="black" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+                        <path d="M24.9164 24.9164L31.2804 31.2803" stroke="black" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                </button>
+            </form>
+
+            {% for street in streets %}
+
+            <div class="block-cars">
+            <div class="car1">
+                <div class="container-pb">
+                    <div class="pA1">
+                        <span class="textA1">{{ street.name }}</span>
+                        <span class="textA1.1">{{ street.time_start }}</span>
                     </div>
-                </div>
-                <div class="pA1-1">
-                    <div class="circle" id="{{ street.id }}">
-                        <span class="num">{{ street.traffic_value }}</span>
+                    <div class="progress-bar">
+                        <div class="progress-bar-value" style="--cur-value: {{ street.traffic_value }}; --bg-color: {{ street.traffic_color }}">
+                        </div>
                     </div>
-                    <div class="time">
-                        <span class="time-val">{{ street.time_end }}</span>
+                    <div class="pA1-1">
+                        <div class="circle" style="--bg-color: {{ street.traffic_color }};">
+                            <span class="num" style="--bg-color: {{ street.traffic_color }};">{{ street.traffic_value }}</span>
+                        </div>
+                        <div class="time">
+                            <span class="time-val">{{ street.time_end }}</span>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
         {% endfor %}
-
-        <script>
-            {% for street in streets %}
-                document.getElementById('{{ street.id }}').style.setProperty('--bg-color', {% if traffic_value in '1234' %} '#22A819' {% elif traffic_value in '567' %} '#FFCC00' {% else %} '#E8413E' {% endif %});
-            {% endfor %}
-        </script>
-
     </div>
+    <div id="map" style="width: 80%; height: 100vh;"></div>
+    <script src="https://api-maps.yandex.ru/2.1/?lang=ru_RU&amp;apikey=1be171c5-c5e2-451f-8ca9-6e9d39152b98" type="text/javascript"></script>
+    <script>
+
+        ymaps.ready(init);
+
+        function init() {
+            var myMap = new ymaps.Map('map', {
+            center: [45.0448, 38.976],
+            zoom: 13,
+            });
+
+            var actualProvider = new ymaps.traffic.provider.Actual({}, { infoLayerShown: true });
+            actualProvider.setMap(myMap);
+
+            myMap.controls.add('searchControl')
+        }
+
+    </script>
 </body>
 </html>

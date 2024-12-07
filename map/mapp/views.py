@@ -4,7 +4,8 @@ from .models import *
 def main(request):
     traffics = Streets.objects.all()
     if request.method == 'POST':
-        traffics = Streets.objects.all().filter(name=request)
+        q = request.POST.get('q')
+        traffics = Streets.objects.all().filter(name=q)
     return render(request, 'mapp/main.html', {'traffics': traffics})
 
 def search(request):
@@ -16,4 +17,8 @@ def search(request):
 
 def map(request):
     streets = Streets.objects.all()
+    if request.method == 'POST':
+        search = request.POST.get('search')
+        streets = Streets.objects.filter(name=search)
+        print(search, streets)
     return render(request, 'mapp/map.html', {'streets': streets})

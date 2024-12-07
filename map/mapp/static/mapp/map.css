@@ -13,9 +13,15 @@
 }
 
 body {
+    display: flex;
+    justify-content: flex-start; /* Выравниваем всё содержимое по левому краю */
+    align-items: flex-start; /* Выравнивание по верхнему краю */
+    height: 100vh;
     font-family: "Inter", serif;
     font-style: normal;
-  }  
+    background: #F4F4F4;
+    flex-direction: row;
+  }
 
 .search-page{
     display: flex;
@@ -23,10 +29,11 @@ body {
     align-items: center;
     width: 450px;
     height: 64px;
-    margin: 25px;
     padding: 12px 16px;
     border: 2px solid black;
     border-radius: 12px;
+    margin-top: 25px;
+    background-color: white;
 }
 
 .search-lp{
@@ -46,16 +53,23 @@ body {
     color: #979797;
 }
 
+.submit-button {
+    background: none;
+    border: none;
+    cursor: pointer;
+}
+
 .container-pb{
     display: flex;
     flex-direction: column;
     gap: 10px;
+    margin-top: 30px;
     width: 450px;
     height: 114px;
     padding: 25px;
-    margin: 125px 25px 25px 25px;
     border: 2px solid black;
     border-radius: 21px;
+    background-color: white;
 }
 
 .progress-bar {
@@ -71,13 +85,12 @@ body {
 
 .progress-bar-value{
     --max-value: 10;
-    --cur-value: 3;
 
     align-self: start;
     height: 6px;
     width: calc(var(--cur-value) / var(--max-value) * 100% - 5px);
     border-radius: 21px;
-    background-color: var(--bg-color, green);
+    background: green;
 }
 
 .pA1{
@@ -93,7 +106,7 @@ body {
     display: flex;
     height: 30px;
     border-radius: 15px;
-    background: #22A819;
+    background: var(--bg-color);
     flex-direction: column;
     justify-content: space-around;
 }
@@ -128,4 +141,14 @@ body {
     flex-direction: row;
     justify-content: space-between;
     align-items: center;
+}
+
+.lpart{
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+    width: 25%;
+    gap: 20px;
+    align-items: center;
+    box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
 }

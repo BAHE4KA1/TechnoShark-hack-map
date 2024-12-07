@@ -46,12 +46,18 @@ class Streets(models.Model):
 
     name = models.CharField(max_length=100, default='Красная')
     traffic_value = models.CharField(max_length=20, choices=t_marks, default='1')
-    if traffic_value in ['1', '2', '3', '4']: traffic_color = '#22A819'
-    elif traffic_value in ['5', '6', '7']: traffic_color = '#FFCC00'
-    else: traffic_color = '#E8413E'
+    traffic_color = models.CharField(max_length=20, default='#FFFFFF')
 
     time_start = models.CharField(max_length=20, default=None)
     time_end = models.CharField(max_length=20, default=None)
+
+    def save(self, *args, **kwargs):
+        if int(self.traffic_value) < 4: self.traffic_color = '#22A819'
+        elif int(self.traffic_value) < 8: self.traffic_color = '#FFCC00'
+        else: '#E8413E'
+
+        self.time_end = '9:00'
+        super(Streets, self).save(*args, **kwargs)
 
     def __str__(self):
         return self.name

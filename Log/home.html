@@ -1,72 +1,28 @@
 <!DOCTYPE html>
-
 <html>
-
 <head>
     <title>Карта Краснодара</title>
-    <link rel="stylesheet" href="style.css">
-    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-</head>
-
-<body>
-
-    <script src="https://api-maps.yandex.ru/2.1/?lang=ru_RU&amp;apikey=1be171c5-c5e2-451f-8ca9-6e9d39152b98
-    " type="text/javascript"></script>
-    <script src="apply_bounds_and_clusterize.js" type="text/javascript"></script>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <style>
-        body,
-        html {
+        body, html {
+            height: 100%;
+            margin: 0;
             font-family: Arial;
             font-size: 11pt;
-            padding: 0;
-            margin: 0;
-            width: 100%;
-            height: 95%;
             background-color: white;
         }
-
-        p {
-            padding: 10px;
-        }
-
         #map {
             width: 100%;
             height: 70vh;
         }
     </style>
-    <script src="https://api-maps.yandex.ru/2.1/?lang=ru_RU&amp;apikey=<ваш API-ключ>" type="text/javascript"></script>
-    <script src="traffic_control.js" type="text/javascript"></script>
-    <style>
-        html,
-        body,
-        #map {
-            width: 100%;
-            height: 100%;
-            padding: 0;
-            margin: 0;
-        }
-    </style>
-        <script src="https://api-maps.yandex.ru/2.1/?lang=ru_RU&amp;apikey=<ваш API-ключ>" type="text/javascript"></script>
-        <script src="traffic_provider.js" type="text/javascript"></script>
-        <style>
-            html, body, #map {
-                width: 100%; height: 100%; padding: 0; margin: 0;
-            }
-        </style>
-
-    <div id="map" class="map"></div>
-    <div id="references" data-title="Элементы управления Пробки" data-description="">
-        <sa href="ready" />,
-        <sa href="Map" />,
-        <sa href="control.TrafficControl" />
-    </div>
-    <div id="references" data-title="Слой пробок на карте без добавления кнопки" data-description="">
-        <sa href="ready"/>,
-        <sa href="Map"/>, 
-        <sa href="traffic.provider.Actual"/>
-    </div>
+</head>
+<body>
+    <div id="map"></div>
+    <script src="https://api-maps.yandex.ru/2.1/?lang=ru_RU&amp;apikey=1be171c5-c5e2-451f-8ca9-6e9d39152b98
+    " type="text/javascript"></script>
+    <script src="map.js"></script>
 </body>
-
 </html>
