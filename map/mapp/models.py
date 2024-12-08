@@ -25,9 +25,9 @@ class Streets(models.Model):
     def save(self, *args, **kwargs):
         if int(self.traffic_value) < 4: self.traffic_color = '#22A819'
         elif int(self.traffic_value) < 8: self.traffic_color = '#FFCC00'
-        else: '#E8413E'
+        else: self.traffic_color = '#E8413E'
 
-        self.time_end = n.answer(str(self.time_start)+' '+str(self.traffic_value))
+        self.time_end = answer(str(self.time_start)+' '+str(self.traffic_value))
         super(Streets, self).save(*args, **kwargs)
 
     def __str__(self):
@@ -47,3 +47,6 @@ class Log(models.Model):
 
     def __str__(self):
         return self.actor
+
+# if __name__ == '__main__':
+#     data_get(Streets)

@@ -58,19 +58,47 @@
     <div id="map" style="width: 80%; height: 100vh;"></div>
     <script src="https://api-maps.yandex.ru/2.1/?lang=ru_RU&amp;apikey=1be171c5-c5e2-451f-8ca9-6e9d39152b98" type="text/javascript"></script>
     <script>
-
-        ymaps.ready(init);
-
-        function init() {
-            var myMap = new ymaps.Map('map', {
+        ymaps.ready(function () {
+        // Создаем карту
+        var map = new ymaps.Map('map', {
             center: [45.0448, 38.976],
             zoom: 13,
             });
 
-            var actualProvider = new ymaps.traffic.provider.Actual({}, { infoLayerShown: true });
-            actualProvider.setMap(myMap);
+        var actualProvider = new ymaps.traffic.provider.Actual({}, { infoLayerShown: true });
+        actualProvider.setMap(map);
+
+        // Пример запроса, переданного из Python (в переменную `req`)
+        var searchQuery = "{{ req }}"; // Строка запроса передается из Python в JavaScript
+
+        // Функция для выполнения поиска на карте
+        function searchLocation(query) {
+            ymaps.geocode(query).then(function (res) {
+                var firstGeoObject = res.geoObjects.get(0);
+                if (firstGeoObject) {
+                    var coordinates = firstGeoObject.geometry.getCoordinates();
+
+                    // Центрируем карту на найденные координаты
+                    map.setCenter(coordinates, 16);
+
+                    // Добавляем метку на найденном месте
+                    var placemark = new ymaps.Placemark(coordinates, {
+                        balloonContent: coordinates
+                    }, {
+                        preset: 'islands#redDotIcon'
+                    });
+
+                    map.geoObjects.add(placemark);
+                } else {
+                    alert('Адрес не найден!');
+                }
+            });
         }
 
+        // Выполняем поиск на карте с переданным запросом
+        searchLocation(searchQuery);
+    });
     </script>
+
 </body>
 </html>

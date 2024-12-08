@@ -1,6 +1,5 @@
 import osmnx as ox
 from random import *
-from .models import *
 
 def traffic():
     city_name = 'Краснодар'
@@ -24,18 +23,9 @@ def traffic():
     t = [f'{i}:00' for i in range(0, 24)]
     t = t + [f'{i}:30' for i in range(0, 24)]
 
-    return t, streets
-
-
-
-def model_fill():
-    t, streets = traffic()
-
     k = 10
     for i in streets:
         k -= 1
         log = Streets(name=i, traffic_value=randint(1, 10), time_start=choice(t))
         print(log)
         if k == 0: break
-
-model_fill()
