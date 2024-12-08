@@ -11,7 +11,8 @@
     <title>Главная</title>
 </head>
 <body>
-    <div class="lpart">
+    <div style="display: flex; flex-direction: row; width: 30%">
+        <div style="display: flex; flex-direction: column; height: 100vh; width: 85%; gap: 20px; align-items: center;">
             <form class="search-page" method="post" action="{% url 'map' %}">
                 {% csrf_token %}
                 <div class="search-lp">
@@ -54,8 +55,43 @@
             </div>
         </div>
         {% endfor %}
+            </div>
+        <div style="padding-top: 25px; display: flex; flex-direction: column; align-items: center; justify-content: flex-start;">
+                    <a href="#"><div style="display: flex; width: 64px; height: 64px; flex-shrink: 0; border-radius: 12px; border: 2px solid #000; background: #FFF; align-items: center; justify-content: center;margin-bottom: 12px;">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 48 48" fill="none">
+                            <path d="M8 24H40M8 12H40M8 36H40" stroke="black" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg></div></a>
+                    <a href="home"><div style="display: flex; width: 64px; height: 64px; flex-shrink: 0; border-radius: 12px; border: 2px solid #000; background: #FFF; align-items: center; justify-content: center; margin-bottom: 12px;">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 48 48" fill="none">
+                        <path d="M9 42V18L4 22L24 6L44 22L39 18V42H9Z" stroke="black" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+                        <path d="M19 29V42H29V29H19Z" stroke="black" stroke-width="2" stroke-linejoin="round"/>
+                        <path d="M9 42H39" stroke="black" stroke-width="2" stroke-linecap="round"/>
+                      </svg></div></a>
+                    <a href="/"><div style="display: flex; width: 64px; height: 64px; flex-shrink: 0; border-radius: 12px; border: 2px solid #000; background: #FFF; align-items: center; justify-content: center; margin-bottom: 12px;">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 48 48" fill="none">
+                        <g clip-path="url(#clip0_371_818)">
+                          <path fill-rule="evenodd" clip-rule="evenodd" d="M47.451 0.338591C47.6228 0.479399 47.7611 0.656588 47.856 0.857366C47.951 1.05814 48.0001 1.2775 48 1.49959V43.4996C47.9998 43.8462 47.8795 44.1821 47.6597 44.4501C47.4398 44.7181 47.1339 44.9017 46.794 44.9696L31.794 47.9696C31.5999 48.0082 31.4001 48.0082 31.206 47.9696L16.5 45.0296L1.794 47.9696C1.57647 48.0131 1.352 48.0078 1.13676 47.954C0.921528 47.9003 0.720888 47.7995 0.549298 47.6589C0.377708 47.5183 0.23944 47.3414 0.144455 47.141C0.0494705 46.9405 0.000133958 46.7214 0 46.4996L0 4.49959C0.000209346 4.15295 0.120468 3.81709 0.34033 3.5491C0.560192 3.2811 0.866085 3.09753 1.206 3.02959L16.206 0.0295914C16.4001 -0.00920082 16.5999 -0.00920082 16.794 0.0295914L31.5 2.96959L46.206 0.0295914C46.4235 -0.0141612 46.6479 -0.00914062 46.8632 0.0442914C47.0785 0.0977234 47.2792 0.198237 47.451 0.338591ZM30 5.72959L18 3.32959V42.2696L30 44.6696V5.72959ZM33 44.6696L45 42.2696V3.32959L33 5.72959V44.6696ZM15 42.2696V3.32959L3 5.72959V44.6696L15 42.2696Z" fill="black"/>
+                        </g>
+                        <defs>
+                          <clipPath id="clip0_371_818">
+                            <rect width="48" height="48" fill="white"/>
+                          </clipPath>
+                        </defs>
+                      </svg></div></a>
+                    <a href="analitics"><div style="display: flex; width: 64px; height: 64px; flex-shrink: 0; border-radius: 12px; border: 2px solid #000; background: #FFF; align-items: center; justify-content: center; margin-bottom: 12px;">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 48 48" fill="none">
+                        <path d="M43.4199 14.58C43.234 14.3925 43.0127 14.2438 42.769 14.1422C42.5253 14.0407 42.2639 13.9884 41.9999 13.9884C41.7359 13.9884 41.4744 14.0407 41.2307 14.1422C40.987 14.2438 40.7658 14.3925 40.5799 14.58L27.9999 27.18L19.4199 18.58C19.234 18.3925 19.0127 18.2438 18.769 18.1422C18.5253 18.0407 18.2639 17.9884 17.9999 17.9884C17.7359 17.9884 17.4744 18.0407 17.2307 18.1422C16.987 18.2438 16.7658 18.3925 16.5799 18.58L4.57988 30.58C4.39242 30.7659 4.24363 30.9871 4.1421 31.2308C4.04056 31.4746 3.98828 31.736 3.98828 32C3.98828 32.264 4.04056 32.5254 4.1421 32.7692C4.24363 33.0129 4.39242 33.2341 4.57988 33.42C4.7658 33.6075 4.98701 33.7562 5.23072 33.8578C5.47444 33.9593 5.73585 34.0116 5.99988 34.0116C6.2639 34.0116 6.52531 33.9593 6.76903 33.8578C7.01275 33.7562 7.23395 33.6075 7.41988 33.42L17.9999 22.82L26.5799 31.42C26.7658 31.6075 26.987 31.7562 27.2307 31.8578C27.4744 31.9593 27.7359 32.0116 27.9999 32.0116C28.2639 32.0116 28.5253 31.9593 28.769 31.8578C29.0128 31.7562 29.234 31.6075 29.4199 31.42L43.4199 17.42C43.6073 17.2341 43.7561 17.0129 43.8577 16.7692C43.9592 16.5254 44.0115 16.264 44.0115 16C44.0115 15.736 43.9592 15.4746 43.8577 15.2308C43.7561 14.9871 43.6073 14.7659 43.4199 14.58Z" fill="black"/>
+                      </svg></div></a>
+                    <a href="/request/"><div style="display: flex; width: 64px; height: 64px; flex-shrink: 0; border-radius: 12px; border: 2px solid #000; background: #FFF; align-items: center; justify-content: center; margin-bottom: 12px;">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 48 48" fill="none">
+                        <path d="M41 10H13V44H41V10Z" stroke="black" stroke-width="4" stroke-linejoin="round"/>
+                        <path d="M35 10V4H8C7.44772 4 7 4.44772 7 5V38H13" stroke="black" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+                        <path d="M21 22H33" stroke="black" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+                        <path d="M21 30H33" stroke="black" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+                      </svg></div></a>
+        </div>
     </div>
-    <div id="map" style="width: 80%; height: 100vh;"></div>
+    <div id="map" style="width: 70%; height: 100vh;"></div>
     <script src="https://api-maps.yandex.ru/2.1/?lang=ru_RU&amp;apikey=1be171c5-c5e2-451f-8ca9-6e9d39152b98" type="text/javascript"></script>
     <script>
         ymaps.ready(function () {

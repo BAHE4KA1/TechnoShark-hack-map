@@ -143,12 +143,13 @@ body {
     align-items: center;
 }
 
-.lpart{
+.lcon {
     display: flex;
-    flex-direction: column;
-    height: 100vh;
+    flex-direction: row;
     width: 25%;
-    gap: 20px;
-    align-items: center;
     box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+}
+
+.btn {
+
 }

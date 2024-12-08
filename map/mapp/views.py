@@ -2,7 +2,8 @@ from django.shortcuts import render
 from .models import *
 
 def requ(request):
-    return render(request, 'mapp/requests.html')
+    logs = Log.objects.all()
+    return render(request, 'mapp/requests.html', {'logs': logs})
 
 def map(request):
     req = ''

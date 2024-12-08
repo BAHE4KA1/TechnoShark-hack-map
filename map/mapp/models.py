@@ -1,5 +1,6 @@
 from django.db import models
 from .neuro import *
+from random import *
 
 class Streets(models.Model):
     t_marks = [
@@ -35,18 +36,16 @@ class Streets(models.Model):
 
 
 class Log(models.Model):
-    actions = [
-        ('Изменение задержки светофора',  'DURATION_CHANGE'),
-        ('Заупск мигающего режима', 'ACCIDENT_MODE'),
-        ('Другое', 'OTHER')
-    ]
+    questor = models.CharField(max_length=100)
+    color = models.CharField(max_length=20, default='#FFFFFF')
 
-    log_date_time = models.DateTimeField()
-    action = models.CharField(max_length=100, choices=actions)
-    actor = models.CharField(max_length=100)
+    def save(self, *args, **kwargs):
+        self.color = choice(['#00FFD9', '#715E7A', '#F6FF00', '#E8413E', '#D13EE8', '#E89B3E'])
+
+        super(Log, self).save(*args, **kwargs)
 
     def __str__(self):
-        return self.actor
+        return self.questor
 
 # if __name__ == '__main__':
 #     data_get(Streets)
