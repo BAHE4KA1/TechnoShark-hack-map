@@ -1,6 +1,12 @@
 from django.shortcuts import render
 from .models import *
 
+def analitics(request):
+    return render(request, 'mapp/analitika.html')
+
+def home(request):
+    return render(request, 'mapp/home.html')
+
 def requ(request):
     logs = Log.objects.all()
     return render(request, 'mapp/requests.html', {'logs': logs})
