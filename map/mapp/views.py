@@ -1,10 +1,15 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from .models import *
+
+def login(request):
+    return render(request, 'mapp/login.html')
 
 def analitics(request):
     return render(request, 'mapp/analitika.html')
 
 def home(request):
+    if request.method == "POST":
+        return redirect('map')
     return render(request, 'mapp/home.html')
 
 def requ(request):
