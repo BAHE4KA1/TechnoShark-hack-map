@@ -9,7 +9,7 @@ def analitics(request):
 
 def home(request):
     if request.method == "POST":
-        return redirect('map')
+        pass
     return render(request, 'mapp/home.html')
 
 def requ(request):
