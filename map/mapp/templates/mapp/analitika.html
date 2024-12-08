@@ -19,26 +19,61 @@
         </div>
         <div class="ll"></div>
         <div class="mid">
-            <div class="map">
+            <div id="map" style="width: 90%; height: 70vh; border: 2px"></div>
+    <script src="https://api-maps.yandex.ru/2.1/?lang=ru_RU&amp;apikey=1be171c5-c5e2-451f-8ca9-6e9d39152b98" type="text/javascript"></script>
+    <script>
+        ymaps.ready(function () {
+        // Создаем карту
+        var map = new ymaps.Map('map', {
+            center: [45.0448, 38.976],
+            zoom: 13,
+            });
+
+        var actualProvider = new ymaps.traffic.provider.Actual({}, { infoLayerShown: true });
+        actualProvider.setMap(map);
+
+        // Пример запроса, переданного из Python (в переменную `req`)
+        var searchQuery = "{{ req }}"; // Строка запроса передается из Python в JavaScript
+
+        // Функция для выполнения поиска на карте
+        function searchLocation(query) {
+            ymaps.geocode(query).then(function (res) {
+                var firstGeoObject = res.geoObjects.get(0);
+                if (firstGeoObject) {
+                    var coordinates = firstGeoObject.geometry.getCoordinates();
+
+                    // Центрируем карту на найденные координаты
+                    map.setCenter(coordinates, 16);
+
+                    // Добавляем метку на найденном месте
+                    var placemark = new ymaps.Placemark(coordinates, {
+                        balloonContent: coordinates
+                    }, {
+                        preset: 'islands#redDotIcon'
+                    });
+
+                    map.geoObjects.add(placemark);
+                } else {
+                    alert('Адрес не найден!');
+                }
+            });
+        }
+
+        // Выполняем поиск на карте с переданным запросом
+        searchLocation(searchQuery);
+    });
+    </script>
+            <div style="display: flex; flex-direction: row; flex-wrap: wrap; gap: 30px; align-content: center; justify-content: center;">
+                <img src="{% static 'photo/photo_1_2024-12-08_11-25-12.jpg' %}">
+                <img src="{% static 'photo/photo_6_2024-12-08_11-25-12.jpg' %}">
+                <img src="{% static 'photo/photo_2_2024-12-08_11-25-12.jpg' %}">
+                <img style="width: 48%" src="{% static 'photo/photo_3_2024-12-08_11-25-12.jpg' %}">
+                <img style="width: 48%" src="{% static 'photo/photo_5_2024-12-08_11-25-12.jpg' %}">
+                <img src="{% static 'photo/photo_4_2024-12-08_11-25-12.jpg' %}" class="cd3img">
+                <img src="{% static 'photo/photo_2024-12-08_13-42-49.jpg' %}">
+                <img src="{% static 'photo/img.png' %}">
+                <img src="{% static 'photo/img_1.png' %}">
             </div>
-            <div class="diag">
-                <div class="cd">
-                    <img src="{% static 'photo/Block.png' %}">
-                    <img src="{% static 'photo/Block (1).png' %}">
-                </div>
-                <div class="do">
-                    <img src="{% static 'photo/Block (2).png' %}">
-                </div>
-                <div class="cd2">
-                    <img src="{% static 'photo/photo_2024-12-07_23-54-18 1.png' %}">
-                    <img src="{% static 'photo/photo_2024-12-08_00-13-09 1.png' %}">
-                </div>
-                <div class="cd3">
-                    <img src="{% static 'photo/Frame 135.png' %}" class="cd3img">
-                    <img  src="{% static 'photo/photo_2_2024-12-07_22-42-59 1.png' %}">
-                </div>
-            </div>
-        </div>
         </div>
     </div>
 </body>

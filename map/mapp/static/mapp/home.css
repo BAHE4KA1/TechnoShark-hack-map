@@ -177,6 +177,6 @@ hr {
     width: 2031px;
     height: 442px;
     flex-shrink: 0;
-    background-image: url(photo/Footer\ \(1\).png);
+    background-image: footer.png;
     background-size: 1923px 418px;
 }
